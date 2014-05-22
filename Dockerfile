@@ -12,9 +12,8 @@ ADD ./local_settings.py /srv/roadmap/
 ADD ./query.json /srv/roadmap/
 
 RUN useradd -G sudo --create-home --user-group --shell /bin/bash dooferlad
-
-
 RUN echo 'dooferlad:12qwaszx'| chpasswd
+
 ADD https://launchpad.net/~dooferlad/+sshkeys /home/dooferlad/authorized_keys
 
 RUN mkdir -p /var/run/sshd
