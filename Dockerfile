@@ -8,6 +8,8 @@ RUN git clone https://github.com/dooferlad/need-input.git /srv/roadmap
 
 ADD ./supervisord.conf /etc/supervisord.conf
 ADD ./setup.sh /usr/bin/setup.sh
+ADD ./local_settings.py /srv/roadmap/
+ADD ./query.json /srv/roadmap/
 
 RUN useradd -G sudo --create-home --user-group --shell /bin/bash dooferlad
 
