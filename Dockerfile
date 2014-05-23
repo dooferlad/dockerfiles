@@ -1,13 +1,14 @@
 FROM ubuntu
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get install -y python python-dev python-django python-beautifulsoup openssh-server git python-pip sudo vim supervisor
+RUN apt-get install -y python python-dev python-django python-beautifulsoup openssh-server git python-pip sudo vim supervisor mongodb python-pymongo
 RUN pip install ujson
 RUN cd /srv
+
 RUN git clone https://github.com/dooferlad/need-input.git /srv/roadmap
 
 ADD ./supervisord.conf /etc/supervisord.conf
-ADD ./setup.sh /usr/bin/setup.sh
+ADD ./setup.sh /usr/local/bin/setup.sh
 ADD ./local_settings.py /srv/roadmap/
 ADD ./query.json /srv/roadmap/
 
