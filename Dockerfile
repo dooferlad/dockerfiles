@@ -1,8 +1,9 @@
-FROM ubuntu
+FROM ubuntu:14.04
+RUN dpkg-divert --local --rename /usr/bin/ischroot && ln -sf /bin/true /usr/bin/ischroot
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get install -y python python-dev python-django python-beautifulsoup openssh-server git python-pip sudo vim supervisor mongodb python-pymongo uwsgi uwsgi-plugin-python
-RUN pip install ujson python-social-auth
+RUN apt-get install -y python python-dev python-beautifulsoup openssh-server git python-pip sudo vim supervisor mongodb uwsgi uwsgi-plugin-python
+RUN pip install ujson python-social-auth pymongo django
 RUN cd /srv
 
 RUN git clone https://github.com/dooferlad/need-input.git /srv/roadmap
